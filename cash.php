@@ -3,13 +3,10 @@ $money = isset($_GET['money']) ?  (float)$_GET['money'] : '';
 $months = isset($_GET['months']) ?  (int)$_GET['months'] : 3;
 $borrowRate = isset($_GET['borrowRate']) ?  (float)$_GET['borrowRate'] : '';
 $lendRate = isset($_GET['lendRate']) ?  (float)$_GET['lendRate'] : '';
-
 //月还款利息
 $monthRepaymentInterestMoney = round(($money * $borrowRate / 100), 3);
-
 //分期总利息
 $repaymentInterestTotalMoney = round(($monthRepaymentInterestMoney * $months), 2);
-
 //分期还款本金
 $monthRepaymentPrincipalMoney = round(($money / $months),2);
 ?>
@@ -220,8 +217,11 @@ $monthRepaymentPrincipalMoney = round(($money / $months),2);
 
 					p2p分期投资收益： <?php echo $repaymentInterestTotalMoney3;?>&nbsp;&nbsp;<br>
 
-					现金分期投资p2p比p2p分期投资多收益（p2p投资收益 - 现金分期手续费 - p2p分期投资收益）：
-					<?php echo $P2PInterestTotalMoney - $repaymentInterestTotalMoney - $repaymentInterestTotalMoney3; ?>
+					用现金分期的钱投资p2p的实际收益（现金分期投资收益 - 现金分期手续费）：
+					<?php echo $repaymentInterestTotalMoney2 - $repaymentInterestTotalMoney ; ?><br>
+					
+					p2p全额投资的实际收益（p2p投资收益 - 现金分期手续费）：
+					<?php echo $P2PInterestTotalMoney - $repaymentInterestTotalMoney ; ?>
 				</td>
 			</tr>
 		</table>
